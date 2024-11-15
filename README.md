@@ -2,7 +2,7 @@
 
 ## Problem Description
 
-### Minimum Test Set
+### Minimum Test Set [SP6] 3
 
 **Input:**
 
@@ -147,14 +147,18 @@ C_3: a c
 
 We conducted several experiments with different instances:
 
-- **Small instances**: The script quickly solves instances with a small number of elements and sets (up to about 5 elements in \( S \) and 10 sets in \( C \)).
-- **Medium-sized instances**: For instances with \( |S| \approx 10 \) and \( |C| \approx 50 \), the runtime is on the order of seconds to minutes.
-- **Large instances**: For instances with \( |S| > 15 \) and large \( |C| \) (e.g., all subsets of a certain size), the runtime can increase significantly, and the SAT solver may require a lot of time or memory.
+| Input File          | n_elements | k  | subset_size | Solvable   | Runtime (s) |
+|---------------------|------------|----|-------------|------------|-------------|
+| `input_1.in`        | 3          | 1  | 2           | N          | 0,078       |
+| `input_2.in`        | 3          | 2  | 2           | Y          | 0,079       |
+| `input_3.in`        | 4          | 3  | 2           | Y          | 0,078       |
+| `input_4.in`        | 4          | 2  | 2           | Y          | 0,071       |
+| `input_small.in`    | 5          | 4  | 2           | Y          | 0,080       |
+| `input_medium.in`   | 6          | 5  | 3           | Y          | 38,049      |
+| `input_generated.in`| 6          | 4  | 3           | Y          | 7,055       |
 
-**Notes**:
 
-- The method used to encode the constraint on the maximum number of sets (forbidding all combinations of \( k+1 \) variables) is not scalable for large \( k \) and \( m \), as the number of clauses grows combinatorially.
-- For larger instances, it would be advisable to implement a more efficient encoding of the constraint (e.g., using cardinality networks or compact counters).
+
 
 **Conclusion**:
 
